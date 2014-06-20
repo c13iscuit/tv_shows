@@ -18,7 +18,8 @@ feature 'View characters', %Q{
       synopsis: 'Seven noble families fight for control of the mythical land of Westeros.'
     }
 
-    show = TelevisionShow.create!(attrs)
+    show = TelevisionShow.new(attrs)
+    show.save
 
     attrs = {
       name: 'Jon Snow',
@@ -27,15 +28,14 @@ feature 'View characters', %Q{
       show_id: show.id
     }
 
-    character = Character.create!(attrs)
-
-    binding.pry
+    character = Character.new(attrs)
+    character.save
 
     visit "/characters"
 
-    expect(page).to have_content "Jon Snow"
-    expect(page).to have_content "Game of Thrones"
-    expect(page).to have_content "Kit Harington"
+    expect(page).to have_content character.name
+    expect(page).to have_content show.title
+    expect(page).to have_content character.actor_name
   end
 
 end

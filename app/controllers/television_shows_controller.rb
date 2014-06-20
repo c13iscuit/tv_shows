@@ -5,6 +5,7 @@ class TelevisionShowsController < ApplicationController
 
   def show
     @television_show = TelevisionShow.find(params[:id])
+    @characters = Character.all
     @character = Character.new
   end
 

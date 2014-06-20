@@ -10,4 +10,15 @@ class CharactersController < ApplicationController
   def index
     @characters = Character.all
   end
+
+  def show
+    @character = Character.find(params[:id])
+  end
+
+  def destroy
+    @character = Character.find(params[:id])
+    @character.destroy
+    flash[:notice] = "deleted"
+    redirect_to :television_shows
+  end
 end

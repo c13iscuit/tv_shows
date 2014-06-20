@@ -1,0 +1,9 @@
+<%= @character.name %>'s Page
+
+<p>Actor:
+<%= @character.actor_name %> </p>
+
+<p>Description:
+<%= @character.description %> </p>
+
+<%= button_to "Delete", :character, method: "delete" %>
